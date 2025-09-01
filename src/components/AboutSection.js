@@ -7,7 +7,7 @@ export default function AboutSection() {
           
           {/* รูปภาพของคุณ */}
           <div className="md:w-1/3">
-            <img 
+            <Image 
               src="https://photos.fife.usercontent.google.com/pw/AP1GczPB5yqx1DAaxJ97daafbteQhOCL3xxEjTmP8ZoMR0vkBwxDuJeFdsQ6=w160-h160-s-no?authuser=0" // <--- วางลิงก์รูปภาพของคุณที่นี่
               alt="Portrait of the site owner"
               className="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto object-cover shadow-lg border-4 border-cyan-400"
