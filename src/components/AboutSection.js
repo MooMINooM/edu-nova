@@ -1,29 +1,29 @@
+import Image from 'next/image'; // 1. นำเข้า Image
+
 export default function AboutSection() {
   return (
     <section id="about" className="bg-gray-800 text-white py-20 px-4">
       <div className="container mx-auto text-center">
         <h2 className="text-4xl font-bold mb-12">About Me</h2>
         <div className="flex flex-col md:flex-row items-center justify-center gap-12">
-          
-          {/* รูปภาพของคุณ */}
           <div className="md:w-1/3">
-            <Image 
-              src="https://photos.fife.usercontent.google.com/pw/AP1GczPB5yqx1DAaxJ97daafbteQhOCL3xxEjTmP8ZoMR0vkBwxDuJeFdsQ6=w160-h160-s-no?authuser=0" // <--- วางลิงก์รูปภาพของคุณที่นี่
+            {/* 2. เปลี่ยน <img> เป็น <Image> และเพิ่ม width/height */}
+            <Image
+              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
               alt="Portrait of the site owner"
+              width={256}  // 3. กำหนดขนาดกว้าง
+              height={256} // 4. กำหนดขนาดสูง
               className="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto object-cover shadow-lg border-4 border-cyan-400"
             />
           </div>
-          
-          {/* เนื้อหาข้อความ */}
           <div className="md:w-2/3 text-left">
             <p className="text-lg text-gray-300 mb-4">
-              สวัสดีครับ! ผมคือนักพัฒนา Full-Stack ที่มีความหลงใหลในการเปลี่ยนไอเดียให้กลายเป็นความจริงผ่านการเขียนโค้ด การเดินทางของผมในโลกเทคโนโลยีเริ่มต้นจากความสงสัยใคร่รู้ จนเติบโตมาเป็นความรักในการสร้างสรรค์ประสบการณ์ดิจิทัลที่สวยงาม มีประสิทธิภาพ และใช้งานง่าย
+              ผมคือนักพัฒนา Full-Stack ที่มีความหลงใหลในการเปลี่ยนไอเดียให้กลายเป็นความจริงผ่านการเขียนโค้ด
             </p>
             <p className="text-lg text-gray-300">
-              ผมมีความเชี่ยวชาญในระบบนิเวศของ JavaScript โดยทำงานกับเทคโนโลยีอย่าง React, Next.js, และ Node.js เพื่อสร้างเว็บแอปพลิเคชันที่ไร้รอยต่อ ผมเป็นผู้เรียนรู้ตลอดชีวิตและพร้อมเสมอที่จะสำรวจเทคโนโลยีใหม่ๆ และพัฒนาฝีมือของตัวเองอยู่เสมอ
+              ผมมีความเชี่ยวชาญใน JavaScript, React, Next.js, และ Node.js และพร้อมที่จะเรียนรู้เทคโนโลยีใหม่ๆ อยู่เสมอ
             </p>
           </div>
-
         </div>
       </div>
     </section>
