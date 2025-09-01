@@ -4,11 +4,15 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'lh3.googleusercontent.com', // <-- อนุญาต Hostname นี้
+        hostname: 'lh3.googleusercontent.com',
       },
       {
         protocol: 'https',
-        hostname: 'drive.google.com', // <-- อนุญาตเผื่อไว้ด้วย
+        hostname: 'drive.google.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.pexels.com', // <-- เพิ่ม Hostname นี้เข้ามา
       }
     ],
   },

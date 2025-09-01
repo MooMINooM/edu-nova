@@ -9,7 +9,7 @@ export default function AboutSection() {
           <div className="md:w-1/3">
             {/* 2. เปลี่ยน <img> เป็น <Image> และเพิ่ม width/height */}
             <Image
-              src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=600"
+              src="https://drive.google.com/uc?id=1Wwqx4RpGSwlbR6m4tTrtgC590zyCr407"
               alt="Portrait of the site owner"
               width={256}  // 3. กำหนดขนาดกว้าง
               height={256} // 4. กำหนดขนาดสูง
