@@ -5,15 +5,10 @@ export default function AboutSection({ aboutData }) {
   return (
     <section id="about" className="bg-gray-800 text-white py-20 px-4">
       <div className="container mx-auto">
-
-        {/* ชื่อใหญ่ๆ */}
         <h2 className="text-5xl font-extrabold text-center text-cyan-400 mb-12">
           {aboutData.mainName || 'ครูมิน'}
         </h2>
-
         <div className="flex flex-col md:flex-row items-center justify-center gap-12">
-
-          {/* รูปภาพ */}
           <div className="md:w-1/3">
             <Image
               src={aboutData.imageUrl || '/placeholder.png'}
@@ -23,37 +18,24 @@ export default function AboutSection({ aboutData }) {
               className="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto object-cover shadow-lg border-4 border-cyan-400"
             />
           </div>
-
-          {/* เนื้อหาข้อความ */}
           <div className="md:w-2/3 text-left space-y-6">
-
-            {/* 1. ชื่อ-สกุล */}
             <div>
               <h3 className="text-2xl font-bold mb-2">ชื่อ-สกุล</h3>
               <p className="text-lg text-gray-300">{aboutData.fullName}</p>
             </div>
-
-            {/* 2. ประวัติการศึกษา */}
             <div>
               <h3 className="text-2xl font-bold mb-2">ประวัติการศึกษา</h3>
-              {/* whitespace-pre-line จะทำให้การขึ้นบรรทัดใหม่จาก Google Sheets แสดงผลถูกต้อง */}
               <p className="text-lg text-gray-300 whitespace-pre-line">{aboutData.education}</p>
             </div>
-
-            {/* 3. อื่นๆ */}
             <div>
               <h3 className="text-2xl font-bold mb-2">อื่นๆ</h3>
               <p className="text-lg text-gray-300 whitespace-pre-line">{aboutData.others}</p>
             </div>
-
-            {/* 4. เพิ่มเติม */}
             <div>
               <h3 className="text-2xl font-bold mb-2">เพิ่มเติม</h3>
               <p className="text-lg text-gray-300 whitespace-pre-line">{aboutData.additionalInfo}</p>
             </div>
-
           </div>
-
         </div>
       </div>
     </section>
