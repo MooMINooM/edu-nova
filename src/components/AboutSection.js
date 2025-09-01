@@ -1,29 +1,59 @@
-import Image from 'next/image'; // 1. นำเข้า Image
+// src/components/AboutSection.js
+import Image from 'next/image';
 
-export default function AboutSection() {
+export default function AboutSection({ aboutData }) {
   return (
     <section id="about" className="bg-gray-800 text-white py-20 px-4">
-      <div className="container mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-12">About Me</h2>
+      <div className="container mx-auto">
+
+        {/* ชื่อใหญ่ๆ */}
+        <h2 className="text-5xl font-extrabold text-center text-cyan-400 mb-12">
+          {aboutData.mainName || 'ครูมิน'}
+        </h2>
+
         <div className="flex flex-col md:flex-row items-center justify-center gap-12">
+
+          {/* รูปภาพ */}
           <div className="md:w-1/3">
-            {/* 2. เปลี่ยน <img> เป็น <Image> และเพิ่ม width/height */}
             <Image
-              src="https://drive.google.com/file/d/1rgoFSzhn51kcMX_scHWYqjkMJud9yRY4/view?usp=drive_link"
-              alt="Portrait of the site owner"
-              width={256}  // 3. กำหนดขนาดกว้าง
-              height={256} // 4. กำหนดขนาดสูง
+              src={aboutData.imageUrl || '/placeholder.png'}
+              alt="Portrait"
+              width={256}
+              height={256}
               className="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto object-cover shadow-lg border-4 border-cyan-400"
             />
           </div>
-          <div className="md:w-2/3 text-left">
-            <p className="text-lg text-gray-300 mb-4">
-              ผมคือนักพัฒนา Full-Stack ที่มีความหลงใหลในการเปลี่ยนไอเดียให้กลายเป็นความจริงผ่านการเขียนโค้ด
-            </p>
-            <p className="text-lg text-gray-300">
-              ผมมีความเชี่ยวชาญใน JavaScript, React, Next.js, และ Node.js และพร้อมที่จะเรียนรู้เทคโนโลยีใหม่ๆ อยู่เสมอ
-            </p>
+
+          {/* เนื้อหาข้อความ */}
+          <div className="md:w-2/3 text-left space-y-6">
+
+            {/* 1. ชื่อ-สกุล */}
+            <div>
+              <h3 className="text-2xl font-bold mb-2">ชื่อ-สกุล</h3>
+              <p className="text-lg text-gray-300">{aboutData.fullName}</p>
+            </div>
+
+            {/* 2. ประวัติการศึกษา */}
+            <div>
+              <h3 className="text-2xl font-bold mb-2">ประวัติการศึกษา</h3>
+              {/* whitespace-pre-line จะทำให้การขึ้นบรรทัดใหม่จาก Google Sheets แสดงผลถูกต้อง */}
+              <p className="text-lg text-gray-300 whitespace-pre-line">{aboutData.education}</p>
+            </div>
+
+            {/* 3. อื่นๆ */}
+            <div>
+              <h3 className="text-2xl font-bold mb-2">อื่นๆ</h3>
+              <p className="text-lg text-gray-300 whitespace-pre-line">{aboutData.others}</p>
+            </div>
+
+            {/* 4. เพิ่มเติม */}
+            <div>
+              <h3 className="text-2xl font-bold mb-2">เพิ่มเติม</h3>
+              <p className="text-lg text-gray-300 whitespace-pre-line">{aboutData.additionalInfo}</p>
+            </div>
+
           </div>
+
         </div>
       </div>
     </section>
