@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-// เพิ่ม slug เข้าไปใน props
 export default function ProjectCard({ slug, title, description, imageUrl }) {
   return (
     <div className="bg-gray-800 rounded-lg overflow-hidden transform hover:scale-105 transition-transform duration-300">
@@ -18,7 +17,6 @@ export default function ProjectCard({ slug, title, description, imageUrl }) {
       <div className="p-6">
         <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
         <p className="text-gray-400 mb-4">{description}</p>
-        {/* เปลี่ยน <a> เป็น <Link> และแก้ href */}
         <Link 
           href={`/projects/${slug}`}
           className="text-cyan-400 hover:text-cyan-300 font-semibold"
