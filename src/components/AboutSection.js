@@ -1,43 +1,51 @@
-// src/components/AboutSection.js
-import Image from 'next/image';
-
 export default function AboutSection({ aboutData }) {
+  if (!aboutData || Object.keys(aboutData).length === 0) {
+    return <p>ไม่พบข้อมูลเกี่ยวกับเรา</p>;
+  }
+
   return (
-    <section id="about" className="bg-gray-800 text-white py-20 px-4 min-h-screen">
-      <div className="container mx-auto">
-        <h2 className="text-5xl font-extrabold text-center text-cyan-400 mb-12">
-          {aboutData.mainName || 'ครูมิน'}
-        </h2>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-12">
-          <div className="md:w-1/3">
-            <Image
-              src={aboutData.imageUrl || '/placeholder.png'}
-              alt="Portrait"
-              width={256}
-              height={256}
-              className="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto object-cover shadow-lg border-4 border-cyan-400"
-            />
-          </div>
-          <div className="md:w-2/3 text-left space-y-6">
-            <div>
-              <h3 className="text-2xl font-bold mb-2">ชื่อ-สกุล</h3>
-              <p className="text-lg text-gray-300">{aboutData.fullName}</p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold mb-2">ประวัติการศึกษา</h3>
-              <p className="text-lg text-gray-300 whitespace-pre-line">{aboutData.education}</p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold mb-2">อื่นๆ</h3>
-              <p className="text-lg text-gray-300 whitespace-pre-line">{aboutData.others}</p>
-            </div>
-            <div>
-              <h3 className="text-2xl font-bold mb-2">เพิ่มเติม</h3>
-              <p className="text-lg text-gray-300 whitespace-pre-line">{aboutData.additionalInfo}</p>
-            </div>
-          </div>
+    <section className="max-w-3xl mx-auto p-6">
+      {/* รูปภาพ */}
+      {aboutData.imageUrl && (
+        <div className="mb-4">
+          <img
+            src={aboutData.imageUrl}
+            alt={aboutData.mainName || "About image"}
+            className="w-40 h-40 object-cover rounded-full mx-auto"
+          />
         </div>
-      </div>
+      )}
+
+      {/* ชื่อหลัก */}
+      <h1 className="text-2xl font-bold text-center mb-2">
+        {aboutData.mainName ?? "ไม่ระบุชื่อ"}
+      </h1>
+
+      {/* ชื่อเต็ม */}
+      <h2 className="text-lg text-gray-700 text-center mb-4">
+        {aboutData.fullName ?? ""}
+      </h2>
+
+      {/* การศึกษา */}
+      {aboutData.education && (
+        <p className="text-base mb-2">
+          <strong>การศึกษา:</strong> {aboutData.education}
+        </p>
+      )}
+
+      {/* ข้อมูลอื่น ๆ */}
+      {aboutData.Other && (
+        <p className="text-base mb-2">
+          <strong>อื่น ๆ:</strong> {aboutData.Other}
+        </p>
+      )}
+
+      {/* ข้อมูลเพิ่มเติม */}
+      {aboutData.additionallInfo && (
+        <p className="text-base mb-2">
+          <strong>เพิ่มเติม:</strong> {aboutData.additionallInfo}
+        </p>
+      )}
     </section>
   );
 }
