@@ -49,7 +49,7 @@ export default function ProjectsSection({ projects }) {
           {filteredProjects.map((project, index) => (
             <ProjectCard
               key={index}
-              slug={project.slug} // <-- เพิ่ม slug เข้าไป
+              slug={project.slug}
               title={project.title}
               description={project.description}
               imageUrl={project.imageUrl}
