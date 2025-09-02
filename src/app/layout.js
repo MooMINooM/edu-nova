@@ -1,7 +1,14 @@
 // src/app/layout.js
+import { Noto_Sans_Thai } from 'next/font/google'; // 1. นำเข้าฟอนต์ Noto_Sans_Thai
 import './globals.css';
-import Navbar from '@/components/Navbar'; // 1. นำเข้า Navbar
-import Footer from '@/components/Footer'; // 2. นำเข้า Footer
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+
+// 2. ตั้งค่าฟอนต์
+const noto_sans_thai = Noto_Sans_Thai({ 
+  weight: ['300', '400', '500', '700'], // Light, Regular, Medium, Bold
+  subsets: ['latin', 'thai'] 
+});
 
 export const metadata = {
   title: 'EduNova Portfolio',
@@ -11,12 +18,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <Navbar /> {/* 3. วาง Navbar ไว้บนสุด */}
+      {/* 3. นำชื่อคลาสของฟอนต์ไปใส่ใน <body> */}
+      <body className={noto_sans_thai.className}> 
+        <Navbar />
         <main>
-          {children} {/* `children` คือเนื้อหาของแต่ละหน้าที่จะถูกแทรกตรงนี้ */}
+          {children}
         </main>
-        <Footer /> {/* 4. วาง Footer ไว้ล่างสุด */}
+        <Footer />
       </body>
     </html>
   );
