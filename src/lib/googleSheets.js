@@ -82,10 +82,10 @@ export async function getProjectBySlug(slug) {
       longDescription: row[1],
       imageGallery1: row[2],
       imageGallery2: row[3],
-    })); // <-- วงเล็บปิด .map()
+    })); // <-- วงเล็บปิด .map() ที่ถูกต้อง
     return projectDetails.find(p => p.slug === slug);
   } catch (error) {
     console.error('Unable to retrieve project details:', error);
     return null;
   }
-} // <-- วงเล็บปิดฟังก์ชัน
+} // <-- วงเล็บปิดฟังก์ชันที่ถูกต้อง
