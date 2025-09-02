@@ -16,18 +16,17 @@ export async function getProjectsData() {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SPREADSHEET_ID,
-      range: 'Sheet1!A2:F', // 1. อัปเดต Range ให้ถึงคอลัมน์ F (slug, title, desc, img, url, cat)
+      range: 'Sheet1!A2:E', // ดึงข้อมูลจากชีต Sheet1 ตั้งแต่แถวที่ 2 ถึงคอลัมน์ E
     });
     
     const rows = response.data.values || [];
 
     return rows.map(row => ({
-      slug: row[0] || '',       // 2. เพิ่ม slug เข้ามา
-      title: row[1] || '',
-      description: row[2] || '',
-      imageUrl: row[3] || '',
-      projectUrl: row[4] || '',
-      category: row[5] || 'Uncategorized',
+      title: row[0] || '',
+      description: row[1] || '',
+      imageUrl: row[2] || '',
+      projectUrl: row[3] || '',
+      category: row[4] || 'Uncategorized',
     }));
 
   } catch (error) {
@@ -70,40 +69,5 @@ export async function getAboutData() {
   } catch (error) {
     console.error('Unable to retrieve about data:', error);
     return {}; // ส่ง object ว่างกลับไปหากเกิด error
-  }
-} 
-
-// --- (ฟังก์ชันใหม่) สำหรับดึงข้อมูลรายละเอียดโปรเจกต์ตาม Slug ---
-export async function getProjectBySlug(slug) {
-  try {
-    const auth = new google.auth.GoogleAuth({
-      credentials: {
-        client_email: process.env.GOOGLE_CLIENT_EMAIL,
-        private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-      },
-      scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
-    });
-
-    const sheets = google.sheets({ version: 'v4', auth });
-    
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.SPREADSHEET_ID,
-      range: 'ProjectDetails!A2:D', // ดึงข้อมูลจากชีต ProjectDetails
-    });
-    
-    const rows = response.data.values || [];
-    
-    const projectDetails = rows.map(row => ({
-      slug: row[0],
-      longDescription: row[1],
-      imageGallery1: row[2],
-      imageGallery2: row[3],
-    }));
-    
-    // ค้นหาโปรเจกต์ที่ slug ตรงกันแล้วส่งค่ากลับไป
-    return projectDetails.find(p => p.slug === slug);
-  } catch (error) {
-    console.error('Unable to retrieve project details:', error);
-    return null;
   }
 }
