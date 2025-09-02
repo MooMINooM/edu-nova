@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function AboutSection({ aboutData }) {
   return (
-    <section id="about" className="bg-gray-800 text-white py-20 px-4">
+    <section id="about" className="bg-gray-800 text-white py-20 px-4 min-h-screen">
       <div className="container mx-auto">
         <h2 className="text-5xl font-extrabold text-center text-cyan-400 mb-12">
           {aboutData.mainName || 'ครูมิน'}
