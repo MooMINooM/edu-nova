@@ -31,7 +31,7 @@ export async function getProjectsData() {
 
   } catch (error) {
     console.error('Unable to retrieve projects data:', error);
-    return []; // ส่งค่าว่างกลับไปหากเกิด error
+    return [];
   }
 }
 
@@ -50,12 +50,11 @@ export async function getAboutData() {
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SPREADSHEET_ID,
-      range: 'About!A2:B', // ดึงข้อมูลจากชีต About ตั้งแต่แถวที่ 2 ถึงคอลัมน์ B
+      range: 'About!A2:B',
     });
     
     const rows = response.data.values || [];
 
-    // แปลงข้อมูล key-value array ให้เป็น object เดียว
     const aboutData = rows.reduce((acc, row) => {
       const [key, value] = row;
       if (key) {
@@ -68,6 +67,6 @@ export async function getAboutData() {
 
   } catch (error) {
     console.error('Unable to retrieve about data:', error);
-    return {}; // ส่ง object ว่างกลับไปหากเกิด error
+    return {};
   }
 }
